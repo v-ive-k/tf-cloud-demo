@@ -1,43 +1,43 @@
-name: Terraform Cloud Scheduled Destroy (Demo Workspace)
+# name: Terraform Cloud Scheduled Destroy (Demo Workspace)
 
-on:
-  schedule:
-    - cron: "*/5 * * * *"   # every 5 minutes
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "*/5 * * * *"   # every 5 minutes
+#   workflow_dispatch:
 
-jobs:
-  destroy:
-    runs-on: ubuntu-latest
+# jobs:
+#   destroy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Trigger Terraform Cloud destroy
-        env:
-          TFC_TOKEN: ${{ secrets.TFC_TOKEN }}
-        run: |
-          echo "Triggering Terraform Cloud destroy run..."
+#     steps:
+#       - name: Trigger Terraform Cloud destroy
+#         env:
+#           TFC_TOKEN: ${{ secrets.TFC_TOKEN }}
+#         run: |
+#           echo "Triggering Terraform Cloud destroy run..."
 
-          curl --fail \
-            --request POST \
-            --header "Authorization: Bearer ${TFC_TOKEN}" \
-            --header "Content-Type: application/vnd.api+json" \
-            --header "Accept: application/vnd.api+json" \
-            https://app.terraform.io/api/v2/runs \
-            --data '{
-              "data": {
-                "type": "runs",
-                "attributes": {
-                  "is-destroy": true,
-                  "message": "Scheduled destroy triggered via GitHub Actions"
-                },
-                "relationships": {
-                  "workspace": {
-                    "data": {
-                      "type": "workspaces",
-                      "id": "ws-StZcMS7hgmwUtDKx"
-                    }
-                  }
-                }
-              }
-            }'
+#           curl --fail \
+#             --request POST \
+#             --header "Authorization: Bearer ${TFC_TOKEN}" \
+#             --header "Content-Type: application/vnd.api+json" \
+#             --header "Accept: application/vnd.api+json" \
+#             https://app.terraform.io/api/v2/runs \
+#             --data '{
+#               "data": {
+#                 "type": "runs",
+#                 "attributes": {
+#                   "is-destroy": true,
+#                   "message": "Scheduled destroy triggered via GitHub Actions"
+#                 },
+#                 "relationships": {
+#                   "workspace": {
+#                     "data": {
+#                       "type": "workspaces",
+#                       "id": "ws-StZcMS7hgmwUtDKx" # change to your workspace ID
+#                     }
+#                   }
+#                 }
+#               }
+#             }'
 
-          echo "Destroy request sent successfully."
+#           echo "Destroy request sent successfully."
