@@ -7,11 +7,11 @@ output "instance_id" {
   value       = module.terraform-aws-ec2.instance_id
 }
 
-output "public_ip" {
+output "imported-public_ip" {
   description = "Public IP of EC2 instance"
   value       = module.terraform-aws-ec2-imported.public_ip
 }
-output "instance_id" {
+output "imported-instance_id" {
   description = "ID of the EC2 instance"
   value       = module.terraform-aws-ec2-imported.instance_id
 }
