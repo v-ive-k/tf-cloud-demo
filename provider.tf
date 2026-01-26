@@ -10,3 +10,13 @@ terraform {
 provider "aws" {
   region = var.region
 }
+
+terraform {
+  cloud {
+    organization = "Vivek-Infra"
+
+    workspaces {
+      name = "tf-cloud-demo"
+    }
+  }
+}
