@@ -15,3 +15,7 @@ output "imported-instance_id" {
   description = "ID of the EC2 instance"
   value       = module.terraform-aws-ec2-imported.instance_id
 }
+output "tags" {
+  description = "tags for the instanec created"
+  value       = module.terraform-aws-ec2-imported.tags
+}
