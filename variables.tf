@@ -15,3 +15,9 @@ variable "instance_name" {
   type        = string
   default     = "vivek-tfc-ec2"
 }
+
+variable "subnets" {
+  description = "List of subnet IDs"
+  type        = list(string)
+  default     = []
+}
