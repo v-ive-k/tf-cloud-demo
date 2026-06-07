@@ -58,7 +58,7 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t3.micro"
 
-  subnet_id = "subnet-0c303003e7f9b02b2"
+  subnet_id = "subnet-038066ae0ef9a1731"
 
   vpc_security_group_ids = [
     aws_security_group.ec2_sg.id
